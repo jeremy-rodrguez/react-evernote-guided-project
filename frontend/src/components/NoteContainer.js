@@ -8,13 +8,13 @@ class NoteContainer extends Component {
     notes: [],
     addToRightPanel: {},
     editSelectedNote: false,
-    filteredNote: false,
+    filteredNotes: [],
   };
 
   componentDidMount() {
     fetch("http://localhost:3000/api/v1/notes")
       .then((response) => response.json())
-      .then((notes) => this.setState({ notes: notes }));
+      .then((notes) => this.setState({ notes: notes, filteredNotes: notes }));
   }
 
   handleNewNote = (e) => {
@@ -59,22 +59,34 @@ class NoteContainer extends Component {
     });
   };
 
-  // handleFilter = (note) => {
-  //   this.setState({
-  //     filteredNote: true,
-  //   });
-  // };
+  handleFilter = (e) => {
+    // console.log(e.target.value);
+    var filteredNote = [];
+    const noteTarget = e.target.value;
+    for (let i = 0; i < this.state.notes.length; i++) {
+      const noteTitles = this.state.notes[i].title;
+
+      if (noteTitles.includes(noteTarget)) {
+        // console.log("This works.");
+        filteredNote.push(this.state.notes[i]);
+      }
+    }
+    this.setState({
+      filteredNotes: filteredNote,
+    });
+  };
 
   render() {
     return (
       <Fragment>
-        <Search handleFilter={this.handleFilter} />
+        <Search handleFilter={this.handleFilter} notes={this.state.notes} />
         <div className="container">
           <Sidebar
             notes={this.state.notes}
             handleClick={this.handleClick}
             handleNewNote={this.handleNewNote}
             // handleDeletion={this.handleDeletion}
+            filteredNotes={this.state.filteredNotes}
           />
           <Content
             addToRightPanel={this.state.addToRightPanel}
