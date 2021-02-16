@@ -17,6 +17,9 @@ class Content extends Component {
         <NoteEditor
           handleEdit={this.props.handleEdit}
           addToRightPanel={this.props.addToRightPanel}
+          handleEditedChange={this.props.handleEditedChange}
+          handleSaveNote={this.props.handleSaveNote}
+          handleCancel={this.props.handleCancel}
         />
       );
     } else if (this.props.addToRightPanel.body) {

@@ -3,7 +3,7 @@ import NoteItem from "./NoteItem";
 
 const NoteList = (props) => {
   return (
-    <ul>
+    <ul onClick={() => props.handleClickCancel()}>
       {props.filteredNotes.map((note) => (
         <NoteItem
           key={note.id}
