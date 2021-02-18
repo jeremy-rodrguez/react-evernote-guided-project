@@ -157,6 +157,13 @@ div.sidebar ul li:hover {
   margin-top: 10px;
 }
 
+.textbox {
+  border-radius: 16px;
+  border: solid;
+  outline-width: 0;
+  width: 380px;
+}
+
 /* Button Style */
 input[type="submit"] {
   height: auto;
