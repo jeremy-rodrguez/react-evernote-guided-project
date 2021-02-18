@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::Base
+class ApplicationController < ActionController::API
 end
 
-# Changed ::API => ::Base
+# Visit https://medium.com/swlh/react-reactions-cfdde7f08dff for user authenticaton in React/Rails

@@ -9,7 +9,7 @@ const NoteList = (props) => {
           key={note.id}
           note={note}
           handleClick={props.handleClick}
-          // handleDeletion={props.handleDeletion}
+          handleSort={props.handleSort}
         />
       ))}
     </ul>

@@ -36,17 +36,6 @@ class NoteContainer extends Component {
       });
   };
 
-  // handleDeletion = (notes) => {
-  //   console.log("Delete Me");
-  //   fetch("http://localhost:3000/api/v1/notes/${note.id}", {
-  //     method: "DELETE",
-  //   });
-  //   .then(response => response.json())
-  //   .then(() => {
-
-  //   })
-  // };
-
   handleClick = (notes) => {
     this.setState({
       addToRightPanel: notes,
@@ -96,6 +85,25 @@ class NoteContainer extends Component {
     });
   };
 
+  handleSort = (e) => {
+    console.log(this.state.notes);
+    switch (e.target.value) {
+      case "A-Z":
+        let sortedNotes = this.state.filteredNotes.sort((a, b) =>
+          a.title > b.title ? 1 : -1
+        );
+        this.setState({ filteredNotes: sortedNotes });
+        break;
+      case "Z-A":
+        let reverseSort = this.state.filteredNotes.sort((a, b) =>
+          a.title > b.title ? -1 : 1
+        );
+        this.setState({ filteredNotes: reverseSort });
+        break;
+      default:
+    }
+  };
+
   handleSaveNote = (addToRightPanel, e) => {
     e.preventDefault();
     console.log(addToRightPanel);
@@ -122,15 +130,19 @@ class NoteContainer extends Component {
   render() {
     return (
       <Fragment>
-        <Search handleFilter={this.handleFilter} notes={this.state.notes} />
+        <Search
+          handleFilter={this.handleFilter}
+          notes={this.state.notes}
+          handleSort={this.handleSort}
+        />
         <div className="container">
           <Sidebar
             notes={this.state.notes}
             handleClick={this.handleClick}
             handleNewNote={this.handleNewNote}
-            // handleDeletion={this.handleDeletion}
             filteredNotes={this.state.filteredNotes}
             handleClickCancel={this.handleClickCancel}
+            handleSort={this.handleSort}
           />
           <Content
             addToRightPanel={this.state.addToRightPanel}

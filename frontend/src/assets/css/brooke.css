@@ -164,6 +164,11 @@ div.sidebar ul li:hover {
   width: 380px;
 }
 
+.radio-btn {
+  width: 15px;
+  height: 15px;
+}
+
 /* Button Style */
 input[type="submit"] {
   height: auto;
