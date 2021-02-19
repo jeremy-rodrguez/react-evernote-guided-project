@@ -31,7 +31,11 @@ class NoteContainer extends Component {
       .then((response) => response.json())
       .then((newNote) => {
         this.setState((prevState) => {
-          return { notes: [...prevState.notes, newNote] };
+          return {
+            notes: [...prevState.notes, newNote],
+            addToRightPanel: newNote,
+            editSelectedNote: true,
+          };
         });
       });
   };
