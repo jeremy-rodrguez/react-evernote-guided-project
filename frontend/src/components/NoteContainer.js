@@ -86,18 +86,20 @@ class NoteContainer extends Component {
   };
 
   handleSort = (e) => {
-    console.log(this.state.notes);
+    console.log(e.target.value);
     switch (e.target.value) {
       case "A-Z":
-        let sortedNotes = this.state.filteredNotes.sort((a, b) =>
-          a.title > b.title ? 1 : -1
-        );
+        let sortedNotes = this.state.filteredNotes.sort((a, b) => {
+          console.log(a.title, b.title);
+          return a.title > b.title ? 1 : -1;
+        });
+        console.log(sortedNotes);
         this.setState({ filteredNotes: sortedNotes });
         break;
       case "Z-A":
-        let reverseSort = this.state.filteredNotes.sort((a, b) =>
-          a.title > b.title ? -1 : 1
-        );
+        let reverseSort = this.state.filteredNotes.sort((a, b) => {
+          return a.title > b.title ? -1 : 1;
+        });
         this.setState({ filteredNotes: reverseSort });
         break;
       default:

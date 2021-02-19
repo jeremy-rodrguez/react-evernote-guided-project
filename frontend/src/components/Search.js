@@ -5,7 +5,7 @@ const Search = (props) => {
     <div className="filter">
       <input
         type="radio"
-        value="az"
+        value="A-Z"
         name="sort"
         className="radio-btn"
         onClick={(e) => props.handleSort(e)}
@@ -13,7 +13,7 @@ const Search = (props) => {
       Sort A-Z
       <input
         type="radio"
-        value="za"
+        value="Z-A"
         name="sort"
         className="radio-btn"
         onClick={(e) => props.handleSort(e)}
